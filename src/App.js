@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import AuthPage from "./components/AuthPage";
+import WhatsAppChat from "./components/ WhatsAppChat";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [credentials, setCredentials] = useState(null);
+
+    return (
+        <div className="App">
+            {!credentials ? (
+                <AuthPage onLogin={setCredentials} />
+            ) : (
+                <WhatsAppChat credentials={credentials} />
+            )}
+        </div>
+    );
 }
 
 export default App;
